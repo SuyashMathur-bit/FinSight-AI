@@ -1,289 +1,126 @@
 # 💰 FinSight AI – Intelligent Personal Finance & Income Prediction System
 
+[![Python](https://img.shields.io/badge/Python-3.11+-blue.svg)](https://www.python.org/)
+[![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-Machine%20Learning-orange.svg)](https://scikit-learn.org/)
+[![Jupyter](https://img.shields.io/badge/Jupyter-Notebook-F37626.svg)](https://jupyter.org/)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+
 An AI-powered Personal Finance Analytics platform that predicts monthly income, analyzes financial behavior, evaluates model performance, and performs comprehensive machine learning error analysis using Random Forest Regression.
 
 ---
 
-# 📖 Overview
+## 📖 Overview
 
-**FinSight AI** is a Machine Learning project developed to predict an individual's monthly income based on financial attributes such as monthly expenses, savings, loan amount, and credit score.
+**FinSight AI** is an end-to-end Machine Learning project developed to predict an individual's monthly income based on financial attributes such as monthly expenses, savings, loan amount, and credit score.
 
-The project demonstrates a complete machine learning workflow including data preprocessing, feature engineering, model training, performance evaluation, bias-variance analysis, feature importance, and error analysis following Andrew Ng's Machine Learning best practices.
-
----
-
-# ✨ Features
-
-## 🤖 Machine Learning
-
-- Random Forest Regression
-- Income Prediction
-- Feature Engineering
-- Model Training
-- Model Evaluation
-
-## 📊 Performance Evaluation
-
-- RMSE (Primary Evaluation Metric)
-- MSE
-- MAE
-- R² Score
-- Model Performance Analysis
-
-## 🔍 Error Analysis
-
-- Prediction Error Analysis
-- Largest Error Detection
-- Residual Analysis
-- Actual vs Predicted Comparison
-- Error Distribution Analysis
-
-## ⚖️ Model Diagnostics
-
-- Bias Analysis
-- Variance Analysis
-- Generalization Gap Analysis
-- Feature Importance Ranking
-
-## 📈 Data Visualization
-
-- Actual vs Predicted Scatter Plot
-- Residual Plot
-- Feature Importance Graph
-- Error Distribution Histogram
-- Performance Metrics Visualization
+The project demonstrates a complete machine learning workflow including data preprocessing, feature engineering, K-Means customer segmentation, model training with an 80/20 train-test split, performance evaluation ($R^2$, RMSE, MAE), bias-variance analysis, feature importance ranking, and residual error analysis following Andrew Ng's Machine Learning best practices.
 
 ---
 
-# 🛠 Tech Stack
+## ✨ Key Features
+
+### 🤖 Machine Learning & Modeling
+- **Supervised Learning:** Random Forest Regression for monthly income forecasting.
+- **Unsupervised Learning:** K-Means Clustering for financial profile segmentation.
+- **Anomaly Detection:** Isolation Forests to detect unusual expense-to-income behaviors.
+- **Automated Advisory:** Rule-based financial recommendation engine based on expense-to-income and debt thresholds.
+
+### 📊 Performance & Diagnostics
+- **Evaluation Metrics:** Evaluated using RMSE, MAE, MSE, and $R^2$ Score.
+- **Bias-Variance Diagnosis:** Explicit training vs. testing $R^2$ evaluation with a minimal generalization gap.
+- **Residual Error Analysis:** Actual vs. Predicted scatter analysis, error distribution histogram, and percentage error profiling.
+- **Feature Importance:** Identifies the primary drivers behind income estimation (Monthly Expenses, Savings, Credit Score, Loan Amount).
+
+---
+
+## 📈 Model Performance
+
+| Metric | Score | Note |
+|---|---|---|
+| **Testing $R^2$** | ~0.80 - 0.81 | Strong variance explanation on unseen test data |
+| **Training $R^2$** | ~0.81 - 0.82 | Minimal generalization gap (< 0.01, no overfitting) |
+| **RMSE** | ~$840 - $870 | Low root mean squared error relative to income spread |
+| **MAE** | ~$650 - $670 | Mean absolute error |
+
+---
+
+## 📂 Dataset & Reproducibility
+
+* **Source:** [Personal Finance ML Dataset (Kaggle)](https://www.kaggle.com/datasets/arfree/personal-finance-ml-dataset) (by Arif Miah)
+* **Records:** 32,424 structured financial records
+* **File:** `synthetic_personal_finance_dataset.csv` (included directly in this repository)
+* **Key Features:**
+  - `monthly_expenses_usd`: Monthly recurring and variable expenses
+  - `savings_usd`: Total savings balance
+  - `loan_amount_usd`: Outstanding loan balance
+  - `credit_score`: Credit score (300–850)
+  - `monthly_income_usd`: Target variable
+
+---
+
+## 🛠 Tech Stack
 
 | Category | Technology |
-|-----------|------------|
-| Language | Python |
-| IDE | Jupyter Notebook |
-| Data Analysis | Pandas, NumPy |
-| Visualization | Matplotlib |
-| Machine Learning | Scikit-learn |
-| Model | Random Forest Regressor |
-| Version Control | Git & GitHub |
+|---|---|
+| **Language** | Python 3 |
+| **Environment** | Jupyter Notebook |
+| **Data Analysis** | Pandas, NumPy |
+| **Machine Learning** | Scikit-Learn (Random Forest, KMeans, Isolation Forest) |
+| **Visualization** | Matplotlib |
+| **Version Control** | Git & GitHub |
 
 ---
 
-# 📂 Project Structure
+## 🚀 How to Run Locally
 
-```
-FinSight-AI
-│
-├── Dataset
-├── Data Preprocessing
-├── Feature Engineering
-├── Model Training
-├── Model Evaluation
-├── Error Analysis
-├── Feature Importance
-├── Bias & Variance Analysis
-├── Visualizations
-└── Documentation
-```
-
----
-
-# ⚙️ Installation
-
-### Clone Repository
-
+### 1. Clone Repository
 ```bash
-git clone https://github.com/YOUR_USERNAME/FinSight-AI.git
+git clone https://github.com/SuyashMathur-bit/FinSight-AI.git
+cd FinSight-AI
 ```
 
-### Install Dependencies
-
+### 2. Install Dependencies
 ```bash
-pip install -r requirements.txt
+pip install pandas numpy scikit-learn matplotlib
 ```
 
-### Launch Jupyter Notebook
-
+### 3. Launch Notebook
 ```bash
-jupyter notebook
+jupyter notebook "FinSight AI.ipynb"
 ```
-
-Open:
-
-```
-FinSight_AI.ipynb
-```
-
-Run all cells.
+Run all cells. The dataset is loaded via relative path `synthetic_personal_finance_dataset.csv` and will execute immediately.
 
 ---
 
-# 🚀 Machine Learning Workflow
+## 🔄 Machine Learning Workflow
 
 ```
-Financial Dataset
+Financial Dataset (32,424 rows)
         │
         ▼
-Data Preprocessing
+Data Preprocessing & EDA
         │
         ▼
-Feature Engineering
+Train-Test Split (80% Train / 20% Test)
         │
         ▼
-Train-Test Split
+Random Forest Regressor (300 estimators, max_depth=6)
         │
         ▼
-Random Forest Training
+Evaluation Metrics (RMSE, MAE, R²)
         │
         ▼
-Income Prediction
+Residual Error Analysis & Distribution
         │
         ▼
-Performance Evaluation
+Bias-Variance Generalization Check
         │
         ▼
-Error Analysis
-        │
-        ▼
-Bias-Variance Analysis
-        │
-        ▼
-Feature Importance
+Feature Importance & Recommendations
 ```
 
 ---
 
-# 📊 Model Evaluation
+## 👤 Author
 
-### Evaluation Metrics
-
-- RMSE
-- MSE
-- MAE
-- R² Score
-
-### Error Analysis
-
-- Largest Prediction Errors
-- Residual Analysis
-- Actual vs Predicted Visualization
-- Error Distribution
-
-### Bias-Variance Analysis
-
-- Training R² Score
-- Testing R² Score
-- Generalization Gap
-
----
-
-# 📈 Feature Importance
-
-The trained Random Forest model identifies the most influential financial features contributing to monthly income prediction.
-
-Example:
-
-- Monthly Expenses
-- Savings
-- Credit Score
-- Loan Amount
-
----
-
-# 📊 Visualizations
-
-- Actual vs Predicted Scatter Plot
-- Residual Plot
-- Error Distribution Histogram
-- Feature Importance Bar Chart
-
----
-
-# 🎯 Project Objectives
-
-- Predict monthly income using financial information.
-- Perform complete machine learning evaluation.
-- Identify model strengths and weaknesses through error analysis.
-- Analyze feature importance.
-- Demonstrate proper bias-variance diagnosis.
-- Build an end-to-end machine learning pipeline.
-
----
-
-# 🏆 Key Highlights
-
-✅ Random Forest Regression
-
-✅ Data Preprocessing
-
-✅ Feature Engineering
-
-✅ RMSE, MAE & R² Evaluation
-
-✅ Error Analysis
-
-✅ Residual Analysis
-
-✅ Feature Importance
-
-✅ Bias-Variance Analysis
-
-✅ Data Visualization
-
-✅ End-to-End Machine Learning Pipeline
-
----
-
-# 📊 Model Architecture
-
-```
-Financial Features
-(Monthly Expenses,
-Savings,
-Loan Amount,
-Credit Score)
-        │
-        ▼
-Data Preprocessing
-        │
-        ▼
-Random Forest Regressor
-        │
-        ▼
-Monthly Income Prediction
-        │
-        ▼
-Performance Evaluation
-        │
-        ▼
-Error Analysis & Insights
-```
-
----
-
-# # 📌 Future Enhancements
-
-- 🌐 Interactive Web Application using Streamlit or Flask
-- 📱 Mobile-friendly User Interface for Financial Predictions
-- 🧠 Deep Learning Models (ANN, LSTM) for Enhanced Prediction Accuracy
-- ⚙️ Hyperparameter Optimization using GridSearchCV & RandomizedSearchCV
-- 🚀 XGBoost and CatBoost Model Comparison
-- 📈 Real-time Financial Analytics Dashboard
-- 🔍 SHAP Explainability for Model Interpretability
-- ☁️ Cloud Deployment (AWS, Render, or Hugging Face Spaces)
-- 🔗 REST API for Real-time Income Prediction
-- 📊 Automated Model Monitoring and Performance Tracking
-- 👥 Personalized Financial Insights and Recommendations
-- 💬 AI-powered Financial Assistant using Large Language Models (LLMs)
-
----
-
-# 🤝 Contributing
-
-Contributions are welcome.
-
-1. Fork the repository.
-2. Create a new branch.
-3. Commit your changes.
-4. Push the branch.
-5. Open a Pull Request.
+* **Suyash Mathur** - [SuyashMathur-bit](https://github.com/SuyashMathur-bit)
